@@ -1,0 +1,14 @@
+{
+  "name": "calculator_1",
+  "version": "0.1.1",
+  "description": "First basic webd project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

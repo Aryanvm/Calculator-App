@@ -1,0 +1,49 @@
+.b1{
+    border-radius: 5px;
+ border:1px solid rgba(236,197,135,0.2);
+    background-color: rgba(237,227,150,1);
+    font-size: Xx-large;
+    width: 70px;
+    height: 70px;
+    font-family: SRadioland; 
+    text-align: center;
+    cursor: pointer;
+    color: rgb(207, 8, 42);
+    
+}
+.b2{
+    border-radius: 5px;
+    border:1px solid rgba(226, 115, 64,0.3);
+    background-color: rgb(207, 8, 42);
+    font-size: Xx-large;
+    width: 70px;
+    height: 70px;
+    font-family: SRadioland; 
+    color: rgb(250, 234, 234);
+    color: rgba(237,227,150,1);
+    text-align: center;
+    cursor: pointer;
+}
+.inp{
+    border-radius: 5px;
+    border:1px solid rgba(236,197,135,0.2);
+    background-color: rgba(237,227,150,0.3);
+    font-size: Xx-large;
+    width: 281.5px;
+    height: 80px;
+    font-family: SRadioland; 
+}
+.b1:hover{
+    /* background-color:rgba(223, 108, 25, 0.6); */
+    background-color: rgb(207, 8, 42);
+    color:rgba(237,227,150,1)
+}
+.b:hover{
+    background-color: black;
+    color: rgba(237,227,150,1);
+}
+.b2:hover{
+    background-color: rgba(226, 59, 30, 0.6);
+    background-color: rgba(237,227,150,1);
+    color: rgb(207, 8, 42);
+}

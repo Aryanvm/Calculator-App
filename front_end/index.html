@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+      .red{
+          color: red;
+      }
+      .green{
+          color: green ;
+         
+      }
+      .set{
+          text-align: right;
+      }
+      .b{
+      color:black;
+      }
+    </style>
+</head>
+<body>
+    <h2 align="center" class="mb-4"><u>CALCULATOR</u></h2>
+    <audio id="pop">
+        <source src="../sounds/microwavebeep.wav" type="audio/wav">
+        </audio>
+<table cellspacing='0px' border='0px' cellpadding='10px' align="center" style="border:green">
+    <thead>
+     <tr>
+       <td colspan="4" class="inp set red" id="display"></td>
+     </tr>
+    </thead>
+    <tr>
+        <td scope="col" class="b1 b" id="AC">AC</td>
+        <td scope="col" class="b1 b" id="signchange">+/-</td>
+        <td scope="col" class="b1 b" id="percentage">%</td>
+        <td scope="col" class="b2" id="divide">/</td>
+    </tr>
+     <tr>
+        <td scope="col" class="b1" id="7">7</td>
+        <td scope="col" class="b1" id="8">8</td>
+        <td scope="col" class="b1" id="9">9</td>
+        <td scope="col" class="b2" id="multiply">*</td>
+    </tr>
+    <tr>
+        <td scope="col" class="b1" id="4">4</td>
+        <td scope="col" class="b1" id="5">5</td>
+        <td scope="col" class="b1" id="6">6</td>
+        <td scope="col" class="b2" id="subtract">-</td>
+    </tr>
+    <tr class="red">
+        <td scope="col" class="b1 " id="1">1</td>
+        <td scope="col" class="b1 " id="2">2</td>
+        <td scope="col" class="b1 " id="3">3</td>
+        <td scope="col" class="b2" id="add">+</td>
+    </tr>
+    <tr>
+        <td scope="col" class="b1" colspan="2" id="0">0</td>
+        <td scope="col" class="b2" id="decimalpoint">.</td>
+        <td scope="col" class="b2" id="equalsto">=</td>
+    </tr>
+    <script>
+        var op1="";
+        var op2="";
+        var operation="";
+        let sound=document.getElementById("pop");
+    var display=$("#display");
+    $("td").click(function(){
+       sound.play();
+        var val=$(this).attr('id');
+        if(val=="AC")
+        {
+            op1="";
+            op2="";
+            operation="";
+            display.addClass("set red").text("") ;
+         
+        }
+        else if(val=="signchange")
+        {
+            var temp;
+            if(op2!="")
+            {temp=-1*parseInt(op2);
+             op2=`${temp}`;
+             display.text(op2);
+             
+            }
+            else
+            {temp=-1*parseInt(op1);
+             op1=`${temp}`;
+             display.text(op1);
+             
+            }
+           
+        }
+        else if(!isNaN(parseInt(val)))
+        {
+            if(op1=="")
+           {
+            display.addClass("set red").text(val) ; 
+          
+            op1+=val;
+               
+           }
+           else{
+               if(operation=="")
+               {
+                 op1+=val;
+                 display.addClass("set red").append(val) ;
+                 
+               }
+               else
+               { 
+                   op2+=val;
+                   display.addClass("set red").text(op2) ;
+                 
+               }
+           }
+        } 
+        else{
+           if(operation=="" && op1!="" && op2=="")
+           operation+=val;
+           else{
+             if(op1!="" && op2!="")
+             { var ans;
+                 if(val=="equalsto")
+                 {
+                     op1=parseInt(op1);
+                     op2=parseInt(op2);
+                     if(operation=="multiply")
+                     ans=eval("op1 * op2")
+                     else if(operation=="add")
+                     ans=eval("op1 + op2")
+                     else if(operation=="subtract")
+                     ans=eval("op1 - op2")
+                     else if(operation=="divide")
+                     ans=eval("op1 / op2")
+                     else
+                     ans=eval("op1 % op2")
+                     op1=ans;
+                     op2="";
+                     operation="";
+                 }
+             }
+           }
+        }
+       display.addClass("set").text(ans) ;
+     
+    })
+    </script>
+
+</table>
+</body>
+</html>
